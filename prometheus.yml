@@ -1,0 +1,7 @@
+global:
+  scrape_interval: 5s # Fast intervals for near live demo metrics
+
+scrape_configs:
+  - job_name: 'secure-execution-engine'
+    static_configs:
+      - targets: ['host.docker.internal:2112'] # Allows Prometheus container to read your host port
