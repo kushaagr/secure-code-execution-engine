@@ -106,7 +106,7 @@ secure-sandbox-engine/
 Clone the repository and spin up the backend caching and telemetry engines:
 
 ```bash
-git clone https://github.com/yourusername/secure-sandbox-engine.git
+git clone https://github.com/kushaagr/secure-sandbox-engine.git
 cd secure-sandbox-engine
 docker compose up -d
 
@@ -127,13 +127,26 @@ go run main.go
 Open a secondary terminal workspace and leverage the built-in CLI compiler proxy to run local script files through the engine:
 
 ```bash
-# Create a dummy payload
+# Create a dummy payload using python script
 echo "print('Evaluating inside a secure sandbox environment!')" > test.py
-
 # Submit script to the background engine
 go run main.go test.py
+```
+
+### Or send payload via HTTP POST
+```bash
+curl -X POST -d "print('Hello from an HTTP stream entry point!')" http://localhost:2112/api/v1/execute
+```
+
+#### Expected Immediate HTTP API Return:
+
+Because the API gateway is completely non-blocking, it will push the script payload to the Redis queue buffer and drop your network thread instantly, returning an asynchronous tracking token within milliseconds:
+
+```json
+{"task_id":"stress-1718010542100","status":"queued"}
 
 ```
+
 
 ---
 
