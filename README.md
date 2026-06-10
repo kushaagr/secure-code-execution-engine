@@ -69,8 +69,7 @@ By tracking custom metric aggregates, engineers can query historical performance
 * **Average Execution Latency Formula:**
   ```promql
   engine_execution_latency_seconds_sum / engine_execution_latency_seconds_count
-
-```
+  ```
 
 * **Failure Resiliency Velocity:** Monitors `engine_sandbox_timeouts_total` and `engine_sandbox_oom_kills_total` counters to instantly flag active adversarial script runs.
 * **Capacity Management Gauges:** Tracks `engine_active_workers_count` to map worker pool utilization factors against active Redis queue depths in real-time.
