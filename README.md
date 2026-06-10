@@ -106,7 +106,7 @@ secure-sandbox-engine/
 Clone the repository and spin up the backend caching and telemetry engines:
 
 ```bash
-git clone [https://github.com/yourusername/secure-sandbox-engine.git](https://github.com/yourusername/secure-sandbox-engine.git)
+git clone https://github.com/yourusername/secure-sandbox-engine.git
 cd secure-sandbox-engine
 docker compose up -d
 
